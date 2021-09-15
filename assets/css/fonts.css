@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'BMitra';
+    src: url('fonts/BMitra.ttf');
+    src: url('fonts/BMitra.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BMitra.woff') format('woff'),
+         url('fonts/BMitra.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BMitraBold';
+    src: url('fonts/BMitraBold.eot');
+    src: url('fonts/BMitraBold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BMitraBold.woff') format('woff'),
+         url('fonts/BMitraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRoya';
+    src: url('fonts/BRoya.eot');
+    src: url('fonts/BRoya.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BRoya.woff') format('woff'),
+         url('fonts/BRoya.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BTabassom';
+    src: url('fonts/BTabassom.eot');
+    src: url('fonts/BTabassom.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BTabassom.woff') format('woff'),
+         url('fonts/BTabassom.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'BTitr';
+    src: url('fonts/BTitr.eot');
+    src: url('fonts/BTitr.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BTitr.woff') format('woff'),
+         url('fonts/BTitr.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BTitrTGE';
+    src: url('fonts/BTitrTGE.eot');
+    src: url('fonts/BTitrTGE.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BTitrTGE.woff') format('woff'), 
+         url('fonts/BTitrTGE.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

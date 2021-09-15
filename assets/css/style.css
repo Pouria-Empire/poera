@@ -1,0 +1,85 @@
+body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.right-side{
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 4rem;
+    border-top-left-radius: 4rem;
+}
+.left-side{
+    padding-right: 1rem;
+}
+.main_bar{
+    justify-content: center;
+    margin-top: 3%;
+}
+.icon-welcome{
+    color: aliceblue;
+}
+.title{
+    margin-top: 3%;
+    font-family: BTitr;
+    color: azure;
+    text-align: center;
+    justify-content: center;
+}
+.font-titr{
+    font-family: BTitr;
+}
+.register_text{
+    padding-top: 3%;
+    padding-bottom: 1%;
+}
+#forgetPassword{
+    font-family: BRoya;
+    font-size: larger;
+    text-align: center;
+
+}
+#list-home{
+    height: 100%;
+}
+#list-login{
+    height: 100%;
+}
+.form-group{
+    padding: 2%;
+}
+.btn_sample{
+    padding: 2%;
+    width: 25%;
+}
+.deactive{
+    display: none;
+}
+.active{
+    display: block;
+}
+#backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    pointer-events: none;
+    display: none;
+  }
+  
+  #backdrop.visible {
+    display: block;
+    pointer-events: all;
+  }
+  .invalid{
+      border-color: red;
+  }
+  .refreshed{
+    border-color: none;
+    }
+  .valid{
+    border-color: green;
+  }
+  .list-group{
+      padding: 2px;
+  }
