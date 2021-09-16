@@ -50,31 +50,43 @@
     </aside>
 
     <div class="main">
-        <form id="noteForm" class="note-form">
+        <form method="post" enctype="multipart/form-data" class="note-form" dir="rtl" >
+            {% csrf_token %}
             <p>
                 <label class="form__label" for="noteTitle">
                     title
                 </label>
-                <input class="form__input" id="noteTitle" name="noteTitle" dir="rtl" maxlength="50"/>
+                <input class="form__input" id="noteTitle" name="title" dir="rtl" maxlength="50"/>
             </p>
 
             <p>
                 <label class="form__label" for="noteText">
                     text
                 </label>
-                <input class="form__input" id="noteText" name="noteText" dir="rtl" maxlength="2000"/>
+                <textarea class="form__input" id="noteText" name="description" dir="rtl" maxlength="2000"
+                          style="height: 250px"></textarea>
             </p>
-
+            <label class="form__label" style="padding-right: 150px">upload unittests</label>
+            <input type="file" name="test">
             <div class="text-right">
                 <button class="btn btn--text" type="reset">cancel</button>
-                <button class="btn" type="submit">create</button>
+                <input class="btn" type="submit">create</input>
             </div>
         </form>
 
-        <main id="notes" class="notes">
+        <main class="notes">
+            {% for question in all_questions %}
+                <div class="card">
+                    <h2 class="card__title">
+                        <a href="question.html" class="card__title" id="{{ question.id }}"
+                           onclick="matchQuestion(this.id)">{{ question.title }}</a>
+                    </h2>
+                    <p class="card__text">solved: 0</p>
+                </div>
+            {% endfor %}
         </main>
     </div>
-    <script> </script>
+    <script></script>
 </div>
 </body>
 </html>
