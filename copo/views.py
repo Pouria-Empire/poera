@@ -27,7 +27,9 @@ def func_main(request):
             return redirect('main')
         else:
             all_questions = Questions.objects.all()
-            return render(request, 'index.html', {'path': request.get_host(), 'all_questions': all_questions})
+            return render(request, 'index.html',
+                          {'path': request.get_host(), 'all_questions': all_questions, 'user': request.user.username,
+                           'email': request.user.email})
     else:
         return redirect('accounts/login/')
 
