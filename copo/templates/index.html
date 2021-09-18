@@ -29,9 +29,9 @@
     <aside class="sidebar">
         <ul class="menu" id="menu">
             <li class="menu__item" id="log-out">
-                <a class="menu__link" href="login2.htm">
+                <a class="menu__link" href="http://127.0.0.1:8000/accounts/logout">
                     <i class="bi bi-door-open-fill"></i>
-                    log out
+                    logout
                 </a>
             </li>
             <li class="menu__item" id="questions">
@@ -53,8 +53,8 @@
             </li>
         </ul>
     </aside>
-
     <div class="main">
+    <button class="btn btn-info btn-outline-danger" id="logout" >log out</button>
         <form method="post" enctype="multipart/form-data" class="note-form" dir="rtl">
             {% csrf_token %}
             <p>
@@ -93,5 +93,10 @@
     </div>
     <script></script>
 </div>
+<script type="text/javascript">
+    document.getElementById("logout").onclick = function () {
+        location.href = "/accounts/logout/";
+    };
+</script>
 </body>
 </html>
