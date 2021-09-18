@@ -1,5 +1,5 @@
 body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    /*background: -webkit-linear-gradient(left, #3931af, #00c6ff);*/
 }
 .right-side{
     background-color: rgb(255, 255, 255);
@@ -82,4 +82,9 @@ body{
   }
   .list-group{
       padding: 2px;
+  }
+  input{
+      display: block;
+      white-space:nowrap;
+      margin: 10px;
   }
