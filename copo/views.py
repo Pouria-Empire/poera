@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.context_processors import request
 from django.contrib.auth.decorators import login_required
@@ -70,8 +71,14 @@ def func_logout(request):
     return redirect('/')
 
 
-def func_question(request):
-    return render(request, 'question.html')
+def func_question(request, qid=-1):
+    if qid == -1:
+        return HttpResponse('Please select a question first')
+    else:
+        question = Questions.objects.filter(id=qid)
+        if not question.exists():
+            return HttpResponse('no question found!')
+        return render(request, 'question.html', {'question': Questions.objects.get(id=qid)})
 
 
 def func_scoreboard(request):

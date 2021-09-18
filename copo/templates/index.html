@@ -83,7 +83,7 @@
             {% for question in all_questions %}
                 <div class="card">
                     <h2 class="card__title">
-                        <a href="question.html" class="card__title" id="{{ question.id }}"
+                        <a href="question/{{ question.id }}" class="card__title" id="{{ question.id }}"
                            onclick="matchQuestion(this.id)">{{ question.title }}</a>
                     </h2>
                     <p class="card__text">solved: 0</p>

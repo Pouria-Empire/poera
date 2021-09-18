@@ -26,7 +26,7 @@ urlpatterns = [
     path('accounts/login/', func_login),
     path('accounts/register/', func_register),
     path('accounts/logout/', func_logout),
-    path('question', func_question),
+    path('question/<int:qid>', func_question),
     path('scoreboard', func_scoreboard),
     path('back', func_goBack),
 ]
