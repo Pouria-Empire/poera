@@ -72,13 +72,16 @@ def func_logout(request):
 
 
 def func_question(request, qid=-1):
-    if qid == -1:
-        return HttpResponse('Please select a question first')
+    if request.user.is_authenticated:
+        if qid == -1:
+            return HttpResponse('Please select a question first')
+        else:
+            question = Questions.objects.filter(id=qid)
+            if not question.exists():
+                return HttpResponse('no question found!')
+            return render(request, 'question.html', {'question': Questions.objects.get(id=qid)})
     else:
-        question = Questions.objects.filter(id=qid)
-        if not question.exists():
-            return HttpResponse('no question found!')
-        return render(request, 'question.html', {'question': Questions.objects.get(id=qid)})
+        return redirect('accounts/login/')
 
 
 def func_scoreboard(request):
