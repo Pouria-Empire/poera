@@ -50,15 +50,12 @@
         </ul>
     </aside>
     <div class="scoreboard">
-        <div class="score">
-            total score: 0
-        </div>
-        <div class="attempts">
-            number of attempts: 0
-        </div>
-        <div class="questions">
-            number of questions: 0
-        </div>
+        {% for user in user_list %}
+            <div class="score">
+                username = {{ user.user.username }}
+                total score: {{ user.score }}
+            </div>
+        {% endfor %}
     </div>
 </div>
 </body>

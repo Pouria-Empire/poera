@@ -1,3 +1,12 @@
+import filecmp
+import os
+import subprocess
+from subprocess import call
+
+from django.core.files.storage import FileSystemStorage
+
+from MIL.settings import BASE_DIR
+from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.context_processors import request
@@ -11,7 +20,7 @@ from django.contrib.auth import (
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Questions
+from .models import Questions, Score
 from copo.form import *
 
 
@@ -20,11 +29,13 @@ def func_main(request):
         print(request.user.username)
         if request.method == "POST":
             new_question = Questions(title=request.POST['title'], description=request.POST['description'],
-                                     test=request.FILES['test'])
+                                     in_txt=request.FILES['in'], out_txt=request.FILES['out'])
             new_question.save()
-            # form = QuestionForm(request.POST)
-            # if form.is_valid():
-            #     form.save()
+            with open(
+                    str(BASE_DIR) + '/media/' + str(
+                        Questions.objects.get(title=request.POST['title']).id) + '/ex_out.txt',
+                    'a') as c:
+                c.close()
             return redirect('main')
         else:
             all_questions = Questions.objects.all()
@@ -73,6 +84,29 @@ def func_logout(request):
 
 def func_question(request, qid=-1):
     if request.user.is_authenticated:
+        if request.method == "POST":
+            if qid != -1:
+                with open('media/' + str(qid) + '/in.txt', 'rb', 0) as a, open('media/' + str(qid) + '/out.txt',
+                                                                               'w+') as b, open(
+                    'media/' + str(qid) + '/ex_out.txt', 'a') as c:
+                    handle_uploaded_file(request.FILES['answer'], 'media/' + str(qid))
+                    our_dir = os.path.abspath("views.py")
+                    full_path = str(our_dir).replace("views.py", "media/" + str(qid))
+                    subprocess.call(['python3', 'wrapper.py'], stdin=a, stdout=b,
+                                    cwd=full_path)
+                    result = filecmp.cmp(full_path + "/ex_out.txt", full_path + "/out.txt")
+                    if result:
+                        score = Score.objects.filter(user=request.user)
+                        if not score.exists():
+                            s = Score(user=request.user, score=100)
+                            s.save()
+                        else:
+                            score = Score.objects.get(user=request.user)
+                            a = score.score+100
+                            Score.objects.filter(id=score.id).update(score=a)
+                        return HttpResponse('Wone!')
+                    else:
+                        return HttpResponse('Lose')
         if qid == -1:
             return HttpResponse('Please select a question first')
         else:
@@ -84,8 +118,15 @@ def func_question(request, qid=-1):
         return redirect('accounts/login/')
 
 
+def handle_uploaded_file(f, path):
+    with open(path + '/wrapper.py', 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+
 def func_scoreboard(request):
-    return render(request, 'scoreboard.html')
+    list_users = Score.objects.order_by('score')
+    return render(request, 'scoreboard.html', {'user_list': list_users})
 
 
 @method_decorator(csrf_exempt, name='dispatch')

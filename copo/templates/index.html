@@ -54,7 +54,7 @@
         </ul>
     </aside>
     <div class="main">
-    <button class="btn btn-info btn-outline-danger" id="logout" >log out</button>
+        <button class="btn btn-info btn-outline-danger" id="logout">log out</button>
         <form method="post" enctype="multipart/form-data" class="note-form" dir="rtl">
             {% csrf_token %}
             <p>
@@ -71,8 +71,10 @@
                 <textarea class="form__input" id="noteText" name="description" dir="rtl" maxlength="2000"
                           style="height: 250px"></textarea>
             </p>
-            <label class="form__label" style="padding-right: 150px">upload unittests</label>
-            <input type="file" name="test">
+            <label class="form__label" style="padding-right: 150px">Inputs as in.txt</label>
+            <input type="file" name="in">
+            <label class="form__label" style="padding-right: 150px">Expected output as out.txt</label>
+            <input type="file" name="out">
             <div class="text-right">
                 <button class="btn btn--text" type="reset">cancel</button>
                 <input class="btn" type="submit">create</input>
