@@ -41,20 +41,19 @@
                 </a>
             </li>
             <li class="menu__item" id="score-board">
-                <a class="menu__link" href="scoreboard.html">
+                <a class="menu__link" href="http://127.0.0.1:8000/scoreboard">
                     <i class="bi bi-award-fill"></i>
                     scores
                 </a>
             </li>
-            <li class="menu__item" id="score-board">
-                <p style="color: darkred">User Logged In:</p>
+            <li class="menu__item" style="overflow: hidden;">
+                <p style="color: darkred; ">User Logged In:</p>
                 <p>Username: {{ user }}</p>
                 <p>Email: {{ email }}</p>
             </li>
         </ul>
     </aside>
     <div class="main">
-        <button class="btn btn-info btn-outline-danger" id="logout">log out</button>
         <form method="post" enctype="multipart/form-data" class="note-form" dir="rtl">
             {% csrf_token %}
             <p>
@@ -73,11 +72,11 @@
             </p>
             <label class="form__label" style="padding-right: 150px">Inputs as in.txt</label>
             <input type="file" name="in">
-            <label class="form__label" style="padding-right: 150px">Expected output as out.txt</label>
-            <input type="file" name="out">
+            <label class="form__label" style="padding-right: 150px; margin-right: 55px; margin-top: 5px">Expected output as out.txt</label>
+            <input type="file" name="out" style="margin-right: 200px">
             <div class="text-right">
-                <button class="btn btn--text" type="reset">cancel</button>
-                <input class="btn" type="submit">create</input>
+                <button class="btn btn--text" type="reset" style="margin-right: 200px; margin-top: 10px">cancel</button>
+                <input class="btn" type="submit">
             </div>
         </form>
 
