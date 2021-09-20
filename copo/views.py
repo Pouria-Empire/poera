@@ -125,7 +125,7 @@ def handle_uploaded_file(f, path):
 
 
 def func_scoreboard(request):
-    list_users = Score.objects.order_by('score')
+    list_users = Score.objects.order_by('-score')
     return render(request, 'scoreboard.html', {'user_list': list_users})
 
 
