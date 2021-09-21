@@ -102,11 +102,11 @@ def func_question(request, qid=-1):
                             s.save()
                         else:
                             score = Score.objects.get(user=request.user)
-                            a = score.score+100
+                            a = score.score + 100
                             Score.objects.filter(id=score.id).update(score=a)
-                        return HttpResponse('Wone!')
+                        return render(request, 'win.html')
                     else:
-                        return HttpResponse('Lose')
+                        return render(request, 'lose.html.html')
         if qid == -1:
             return HttpResponse('Please select a question first')
         else:
